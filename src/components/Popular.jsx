@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import {Link} from "react-router-dom";
 
 
 function Popular() {
@@ -58,9 +59,11 @@ useEffect(() => {
                     return(
                         <SplideSlide key={recipe.id}>
                             <Card>
+                                <Link to={"/recipe/"+recipe.id}>
                                 <p>{recipe.title}</p>
                                 <img src={recipe.image} alt={recipe.title}/>
                                 <Gradient/>
+                                </Link>
                             </Card>
                         </SplideSlide>
                      );
@@ -75,9 +78,6 @@ margin: 4rem 0rem;
 @media (max-width: 768){
     margin: 2rem 0rem;
 }
-
-
-
 `;
 
 const Card = styled.div`
@@ -109,12 +109,9 @@ p{
     align-items: center;
     justify-content: center;
     height: 40%;
- 
-
 }
 @media(min-width: 768px){
-       min-height: 25rem;
-    
+    min-height: 25rem;   
 }
 `;
  
@@ -124,6 +121,6 @@ position: absolute;
 width: 100%;
 height: 100%;
 background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-`
+`;
 
 export default Popular
